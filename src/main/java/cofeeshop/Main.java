@@ -3,7 +3,7 @@ package cofeeshop;
 import java.util.Scanner;
 
 public class Main {
-    static Scanner sc;
+    public static Scanner sc;
     static int userSelection = 0;
 
     public static void main(String[] args) {
@@ -65,7 +65,7 @@ public class Main {
 
     } //mainMenu closing braces
 
-    private static void buyMethod() {
+    public static void buyMethod() {
 
         Scanner s = new Scanner(System.in);
 
