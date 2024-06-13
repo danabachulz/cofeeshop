@@ -18,24 +18,53 @@ public class tesTest {
     CoffeeMachineFunctions cmf = new CoffeeMachineFunctions();
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
-
     @BeforeEach
     void setUp() {
         // Redirect System.out to the outputStreamCaptor
         System.setOut(new PrintStream(outputStreamCaptor));
     }
-
     @AfterEach
     void tearDown() {
         // Reset System.out to its original stream
         System.setOut(originalOut);
     }
-
     @ParameterizedTest
     @ValueSource(ints = {1,2,3,4,5,6,7,8,9,})
     public void coba_espresso(int cup){
         
         CoffeeMachineFunctions.espresso(cup);;
+
+        String expectedOutput = "\n Starting to make coffee" +
+                        "\n Grinding coffee beans" +
+                        "\n Boiling water" +
+                        "\n Mixing boiled water with crushed coffee beans" +
+                        "\n Pouring coffee into the cup" +
+                        "\n Coffee is ready!\n";
+        // Verify the output
+        assertEquals(expectedOutput, outputStreamCaptor.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3,4,5,6,7,8,9,})
+    public void coba_latte(int cup){
+        
+        CoffeeMachineFunctions.latte(cup);;
+
+        String expectedOutput = "\n Starting to make coffee" +
+                        "\n Grinding coffee beans" +
+                        "\n Boiling water" +
+                        "\n Mixing boiled water with crushed coffee beans" +
+                        "\n Pouring coffee into the cup" +
+                        "\n Coffee is ready!\n";
+        // Verify the output
+        assertEquals(expectedOutput, outputStreamCaptor.toString());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3,4,5,6,7,8,9,})
+    public void coba_cappuchino(int cup){
+        
+        CoffeeMachineFunctions.cappuccino(cup);;
 
         String expectedOutput = "\n Starting to make coffee" +
                         "\n Grinding coffee beans" +
